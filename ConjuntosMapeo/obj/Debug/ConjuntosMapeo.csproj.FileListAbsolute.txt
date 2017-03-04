@@ -8,3 +8,12 @@ C:\Users\jeobal\documents\visual studio 2015\Projects\ConjuntosMapeo\ConjuntosMa
 C:\Users\jeobal\documents\visual studio 2015\Projects\ConjuntosMapeo\ConjuntosMapeo\obj\Debug\ConjuntosMapeo.csproj.GenerateResource.Cache
 C:\Users\jeobal\documents\visual studio 2015\Projects\ConjuntosMapeo\ConjuntosMapeo\obj\Debug\ConjuntosMapeo.exe
 C:\Users\jeobal\documents\visual studio 2015\Projects\ConjuntosMapeo\ConjuntosMapeo\obj\Debug\ConjuntosMapeo.pdb
+C:\Users\jeobal\Desktop\Git\ConjuntosMapeo\ConjuntosMapeo\bin\Debug\ConjuntosMapeo.exe.config
+C:\Users\jeobal\Desktop\Git\ConjuntosMapeo\ConjuntosMapeo\obj\Debug\ConjuntosMapeo.exe
+C:\Users\jeobal\Desktop\Git\ConjuntosMapeo\ConjuntosMapeo\obj\Debug\ConjuntosMapeo.pdb
+C:\Users\jeobal\Desktop\Git\ConjuntosMapeo\ConjuntosMapeo\bin\Debug\ConjuntosMapeo.exe
+C:\Users\jeobal\Desktop\Git\ConjuntosMapeo\ConjuntosMapeo\bin\Debug\ConjuntosMapeo.pdb
+C:\Users\jeobal\Desktop\Git\ConjuntosMapeo\ConjuntosMapeo\obj\Debug\ConjuntosMapeo.csprojResolveAssemblyReference.cache
+C:\Users\jeobal\Desktop\Git\ConjuntosMapeo\ConjuntosMapeo\obj\Debug\ConjuntosMapeo.Menu.resources
+C:\Users\jeobal\Desktop\Git\ConjuntosMapeo\ConjuntosMapeo\obj\Debug\ConjuntosMapeo.Properties.Resources.resources
+C:\Users\jeobal\Desktop\Git\ConjuntosMapeo\ConjuntosMapeo\obj\Debug\ConjuntosMapeo.csproj.GenerateResource.Cache
