@@ -36,9 +36,43 @@ namespace ConjuntosMapeo
         private void union(List<String> uno, List<String> dos)
         {
             //Metodo para unir dos listas.
-            IEnumerable<String> resultado = uno.Union(dos);
+            IEnumerable<String> resultadoU = uno.Union(dos);
             //Ciclo para imprimir el resultado.
+            foreach (String valor in resultadoU)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
+
+        private void complemento(List<String> uno)
+        {
+            List<String> resultadoC = new List<String>();
+
+            for (int f = 0; f < universo.Count; f++)
+            {
+                for (int o = 0; o < uno.Count; o++)
+                {
+                    if (uno[o] == universo[f])
+                    {
+                    }
+                    else
+                    {
+                        resultadoC.Add(universo[f]);
+                    }
+                }
+            }
             foreach (String valor in resultado)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
+
+        private void interseccion(List<String> uno, List<String> dos)
+        {
+            //Metodo para unir dos listas.
+            IEnumerable<String> resultadoI = uno.Intersect(dos);
+            //Ciclo para imprimir el resultado.
+            foreach (String valor in resultadoI)
             {
                 label15.Text += valor + ", ";
             }
@@ -150,9 +184,13 @@ namespace ConjuntosMapeo
             {
                 auxiliarUnion();
             }
-            else if (operacionProducto)
+            else if (operacionComple)
             {
-               // auxiliar
+                auxiliarComplemento();
+            }
+            else if (operacionInter)
+            {
+                auxiliarInterseccion();
             }
             primero = ""; segundo = ""; tercero = "";
             operacionA = false; operacionB = false; operacionC = false;
@@ -166,7 +204,7 @@ namespace ConjuntosMapeo
                 {
                     union(mundoA, mundoB);
                 }
-                else 
+                else
                 {
                     union(mundoB, mundoA);
                 }
@@ -177,7 +215,7 @@ namespace ConjuntosMapeo
                 {
                     union(mundoA, mundoC);
                 }
-                else 
+                else
                 {
                     union(mundoC, mundoA);
                 }
@@ -192,6 +230,38 @@ namespace ConjuntosMapeo
                 {
                     union(mundoC, mundoB);
                 }
+            }
+        }
+
+        private void auxiliarInterseccion()
+        {
+            if (operacionA && operacionB)
+            {
+                interseccion(mundoA, mundoB);
+            }
+            else if (operacionA && operacionC)
+            {
+                interseccion(mundoA, mundoC);
+            }
+            else
+            {
+                interseccion(mundoB, mundoC);
+            }
+        }
+
+        private void auxiliarComplemento()
+        {
+            if (operacionA)
+            {
+                complemento(mundoA);
+            }
+            else if (operacionB)
+            {
+                complemento(mundoB);
+            }
+            else
+            {
+                complemento(mundoC);
             }
         }
 

@@ -220,11 +220,11 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(301, 4);
+            this.label11.Location = new System.Drawing.Point(301, 9);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(13, 288);
+            this.label11.Size = new System.Drawing.Size(13, 378);
             this.label11.TabIndex = 15;
-            this.label11.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n";
+            this.label11.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|";
             // 
             // txtOpera
             // 
@@ -379,7 +379,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 292);
+            this.label13.Location = new System.Drawing.Point(12, 380);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(608, 18);
             this.label13.TabIndex = 30;
@@ -389,7 +389,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(301, 310);
+            this.label14.Location = new System.Drawing.Point(301, 398);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(76, 18);
             this.label14.TabIndex = 31;
@@ -399,7 +399,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(17, 334);
+            this.label15.Location = new System.Drawing.Point(17, 422);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(0, 18);
             this.label15.TabIndex = 32;
@@ -419,7 +419,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 362);
+            this.ClientSize = new System.Drawing.Size(622, 454);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
