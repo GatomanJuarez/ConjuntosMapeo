@@ -72,6 +72,11 @@ namespace ConjuntosMapeo
             //Metodo para unir dos listas.
             IEnumerable<String> resultadoI = uno.Intersect(dos);
             //Ciclo para imprimir el resultado.
+            resultadoI.Count();
+            if (resultadoI.Count().Equals(0))
+            {
+                label15.Text = "No hay valores.";
+            }
             foreach (String valor in resultadoI)
             {
                 label15.Text += valor + ", ";
@@ -79,11 +84,27 @@ namespace ConjuntosMapeo
         }
 
         private void diferencia(List<String> uno, List<String> dos)
-        {
+        {/*
             //Metodo para unir dos listas.
-            IEnumerable<String> resultadoU = uno.Except(dos);
+            
             //Ciclo para imprimir el resultado.
             foreach (String valor in resultadoU)
+            {
+                label15.Text += valor + ", ";
+            }*/
+        }
+
+        private void producto(List<String> uno, List<String> dos)
+        {
+            List<String> resultadoP = new List<String>();
+            for (int f = 0; f < uno.Count; f++)
+            {
+                for (int o = 0; o < dos.Count; o++)
+                {
+                        resultadoP.Add(dos[o]+uno[f]);
+                    }
+            }
+            foreach (String valor in resultadoP)
             {
                 label15.Text += valor + ", ";
             }
@@ -222,6 +243,10 @@ namespace ConjuntosMapeo
             {
                 auxiliarConcatenacion();
             }
+            else if (operacionProducto)
+            {
+                auxiliarProducto();
+            }
             primero = ""; segundo = ""; tercero = "";
             operacionA = false; operacionB = false; operacionC = false;
         }
@@ -296,6 +321,43 @@ namespace ConjuntosMapeo
                 else
                 {
                     concatenacion(mundoC, mundoB);
+                }
+            }
+        }
+
+        private void auxiliarProducto()
+        {
+            if (operacionA && operacionB)
+            {
+                if (primero == "A" && segundo == "B")
+                {
+                    producto(mundoA, mundoB);
+                }
+                else
+                {
+                    producto(mundoB, mundoA);
+                }
+            }
+            else if (operacionA && operacionC)
+            {
+                if (primero == "A" && segundo == "C")
+                {
+                    producto(mundoA, mundoC);
+                }
+                else
+                {
+                    producto(mundoC, mundoA);
+                }
+            }
+            else
+            {
+                if (primero == "B" && segundo == "C")
+                {
+                    producto(mundoB, mundoC);
+                }
+                else
+                {
+                    producto(mundoC, mundoB);
                 }
             }
         }
@@ -430,7 +492,7 @@ namespace ConjuntosMapeo
 
         private void button12_Click(object sender, EventArgs e)
         {
-            txtOpera.Text += "_";
+            txtOpera.Text += "⊃";
             operacionPertenencia = true;
         }
     }

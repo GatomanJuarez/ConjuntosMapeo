@@ -360,7 +360,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(85, 28);
             this.button12.TabIndex = 28;
-            this.button12.Text = "_";
+            this.button12.Text = "⊃";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
