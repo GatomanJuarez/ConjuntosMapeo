@@ -61,7 +61,7 @@ namespace ConjuntosMapeo
                     }
                 }
             }
-            foreach (String valor in resultado)
+            foreach (String valor in resultadoC)
             {
                 label15.Text += valor + ", ";
             }
@@ -73,6 +73,28 @@ namespace ConjuntosMapeo
             IEnumerable<String> resultadoI = uno.Intersect(dos);
             //Ciclo para imprimir el resultado.
             foreach (String valor in resultadoI)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
+
+        private void diferencia(List<String> uno, List<String> dos)
+        {
+            //Metodo para unir dos listas.
+            IEnumerable<String> resultadoU = uno.Except(dos);
+            //Ciclo para imprimir el resultado.
+            foreach (String valor in resultadoU)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
+
+        private void concatenacion(List<String> uno, List<String> dos)
+        {
+            //Metodo para unir dos listas.
+            IEnumerable<String> resultadoU = dos.Concat(uno);
+            //Ciclo para imprimir el resultado.
+            foreach (String valor in resultadoU)
             {
                 label15.Text += valor + ", ";
             }
@@ -192,6 +214,14 @@ namespace ConjuntosMapeo
             {
                 auxiliarInterseccion();
             }
+            else if (operacionDiferen)
+            {
+                auxiliarDiferencia();
+            }
+            else if (operacionConca)
+            {
+                auxiliarConcatenacion();
+            }
             primero = ""; segundo = ""; tercero = "";
             operacionA = false; operacionB = false; operacionC = false;
         }
@@ -229,6 +259,80 @@ namespace ConjuntosMapeo
                 else
                 {
                     union(mundoC, mundoB);
+                }
+            }
+        }
+
+        private void auxiliarConcatenacion()
+        {
+            if (operacionA && operacionB)
+            {
+                if (primero == "A" && segundo == "B")
+                {
+                    concatenacion(mundoA, mundoB);
+                }
+                else
+                {
+                    concatenacion(mundoB, mundoA);
+                }
+            }
+            else if (operacionA && operacionC)
+            {
+                if (primero == "A" && segundo == "C")
+                {
+                    concatenacion(mundoA, mundoC);
+                }
+                else
+                {
+                    concatenacion(mundoC, mundoA);
+                }
+            }
+            else
+            {
+                if (primero == "B" && segundo == "C")
+                {
+                    concatenacion(mundoB, mundoC);
+                }
+                else
+                {
+                    concatenacion(mundoC, mundoB);
+                }
+            }
+        }
+
+        private void auxiliarDiferencia()
+        {
+            if (operacionA && operacionB)
+            {
+                if (primero == "A" && segundo == "B")
+                {
+                    diferencia(mundoA, mundoB);
+                }
+                else
+                {
+                    diferencia(mundoB, mundoA);
+                }
+            }
+            else if (operacionA && operacionC)
+            {
+                if (primero == "A" && segundo == "C")
+                {
+                    diferencia(mundoA, mundoC);
+                }
+                else
+                {
+                    diferencia(mundoC, mundoA);
+                }
+            }
+            else
+            {
+                if (primero == "B" && segundo == "C")
+                {
+                    diferencia(mundoB, mundoC);
+                }
+                else
+                {
+                    diferencia(mundoC, mundoB);
                 }
             }
         }
@@ -310,6 +414,7 @@ namespace ConjuntosMapeo
         private void button8_Click(object sender, EventArgs e)
         {
             txtOpera.Text += "Con";
+            operacionConca = true;
         }
 
         private void btnC_Click(object sender, EventArgs e)
