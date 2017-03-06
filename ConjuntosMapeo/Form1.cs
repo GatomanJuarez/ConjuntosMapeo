@@ -75,8 +75,7 @@ namespace ConjuntosMapeo
 
         private void pertenencia(List<String> uno, List<String> dos)
         {
-            //Si B contiene todos los elementos de A
-            
+            //Si los elementos que tiene A estan en B.
             int auxil = 0;
             for (int i=0; i < dos.Count; i++)
             {
@@ -633,6 +632,7 @@ namespace ConjuntosMapeo
 
         private void button11_Click(object sender, EventArgs e)
         {
+            //Si los elementos que tiene A estan en B.
             txtOpera.Text += "⊆ ";
             operacionPertenencia = true;
         }
@@ -656,6 +656,7 @@ namespace ConjuntosMapeo
 
         private void button12_Click(object sender, EventArgs e)
         {
+            //Si los elementos que tiene B estan en A.
             txtOpera.Text += "⊃";
             operacionPertenencia2 = true;
         }
