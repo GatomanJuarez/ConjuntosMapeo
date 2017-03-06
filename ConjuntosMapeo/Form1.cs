@@ -99,7 +99,28 @@ namespace ConjuntosMapeo
 
         }
 
-        
+        private void potencia(List<String> uno)
+        {
+            List<String> resultadoP = new List<String>();
+            for (int i = 0; i < uno.Count; i++)
+            {
+                resultadoP.Add(uno[i]);
+            }
+            int contador = 1;
+            for (int i = 0; i < uno.Count; i++)
+            {
+                for (int w = contador; w < uno.Count; w++)
+                {
+                    resultadoP.Add(uno[i] + uno[w]);
+
+                }
+                contador++;
+            }
+            foreach (String valor in resultadoP)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
 
         private void producto(List<String> uno, List<String> dos)
         {
