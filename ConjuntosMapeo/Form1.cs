@@ -47,18 +47,23 @@ namespace ConjuntosMapeo
         private void complemento(List<String> uno)
         {
             List<String> resultadoC = new List<String>();
-
+            bool auxx = false; String auxxxx = "";
             for (int f = 0; f < universo.Count; f++)
             {
                 for (int o = 0; o < uno.Count; o++)
                 {
                     if (uno[o] == universo[f])
                     {
+                        f++; o++;
+                        break;
                     }
                     else
                     {
                         resultadoC.Add(universo[f]);
+
+                        break;
                     }
+
                 }
             }
             foreach (String valor in resultadoC)
@@ -84,15 +89,17 @@ namespace ConjuntosMapeo
         }
 
         private void diferencia(List<String> uno, List<String> dos)
-        {/*
-            //Metodo para unir dos listas.
-            
+        {
+            IEnumerable<String> resultadoD = uno.Except(dos);
             //Ciclo para imprimir el resultado.
-            foreach (String valor in resultadoU)
+            foreach (String valor in resultadoD)
             {
                 label15.Text += valor + ", ";
-            }*/
+            }
+
         }
+
+        
 
         private void producto(List<String> uno, List<String> dos)
         {
@@ -101,8 +108,8 @@ namespace ConjuntosMapeo
             {
                 for (int o = 0; o < dos.Count; o++)
                 {
-                        resultadoP.Add(dos[o]+uno[f]);
-                    }
+                    resultadoP.Add(dos[o] + uno[f]);
+                }
             }
             foreach (String valor in resultadoP)
             {
@@ -164,11 +171,11 @@ namespace ConjuntosMapeo
             operacionA = true;
             txtOpera.Text += "A";
 
-            if(primero == "")
+            if (primero == "")
             {
                 primero = "A";
             }
-            else if(segundo == "")
+            else if (segundo == "")
             {
                 segundo = "A";
             }
@@ -246,6 +253,10 @@ namespace ConjuntosMapeo
             else if (operacionProducto)
             {
                 auxiliarProducto();
+            }
+            else if (operacionPotencia)
+            {
+                auxiliarPotencia();
             }
             primero = ""; segundo = ""; tercero = "";
             operacionA = false; operacionB = false; operacionC = false;
@@ -397,6 +408,7 @@ namespace ConjuntosMapeo
                     diferencia(mundoC, mundoB);
                 }
             }
+
         }
 
         private void auxiliarInterseccion()
@@ -428,6 +440,22 @@ namespace ConjuntosMapeo
             else
             {
                 complemento(mundoC);
+            }
+        }
+
+        private void auxiliarPotencia()
+        {
+            if (operacionA)
+            {
+                potencia(mundoA);
+            }
+            else if (operacionB)
+            {
+                potencia(mundoB);
+            }
+            else
+            {
+                potencia(mundoC);
             }
         }
 
