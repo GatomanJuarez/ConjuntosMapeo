@@ -302,11 +302,11 @@
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(320, 217);
+            this.button8.Location = new System.Drawing.Point(525, 186);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(187, 28);
+            this.button8.Size = new System.Drawing.Size(85, 28);
             this.button8.TabIndex = 23;
-            this.button8.Text = "Concatenación.";
+            this.button8.Text = "AB";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -367,9 +367,9 @@
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(525, 217);
+            this.button13.Location = new System.Drawing.Point(320, 220);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(85, 28);
+            this.button13.Size = new System.Drawing.Size(187, 28);
             this.button13.TabIndex = 29;
             this.button13.Text = "=";
             this.button13.UseVisualStyleBackColor = true;
@@ -407,7 +407,7 @@
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(422, 264);
+            this.button14.Location = new System.Drawing.Point(525, 220);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(85, 28);
             this.button14.TabIndex = 33;
