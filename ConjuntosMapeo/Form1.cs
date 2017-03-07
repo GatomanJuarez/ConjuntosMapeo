@@ -44,618 +44,625 @@ namespace ConjuntosMapeo
 
         private void complemento(List<String> uno)
         {
-            List<String> resultadoC = new List<String>();
+            /*List<String> resultadoC = new List<String>();
             string palabra = "";
+            String a;
             for (int s = 0; s < universo.Count; s++)
             {
                 for (int e = 0; e < uno.Count; e++)
                 {
-                    if (universo[s] != uno[e])
+                    if (universo[s].Equals(uno[e]))
                     {
-                        resultadoC.Add(universo[s]);
-                        e++;
-                        break;
+                        //  s++;
+                        // String a = universo[s];
                     }
                     else
                     {
-
-                        break;
+                        // resultadoC.Add(universo[s]);
+                        a = universo[s];
+                        e++;
                     }
                 }
+                resultadoC.Add(a);
             }
+            */
+
+
+            IEnumerable<String> resultadoC = universo.Except(uno);
+            //Ciclo para imprimir el resultado.
             foreach (String valor in resultadoC)
             {
                 label15.Text += valor + ", ";
             }
         }
 
-private void pertenencia(List<String> uno, List<String> dos)
-{
-    //Si los elementos que tiene A estan en B.
-    int auxil = 0;
-    for (int i = 0; i < dos.Count; i++)
-    {
-        for (int x = 0; x < uno.Count; x++)
+        private void pertenencia(List<String> uno, List<String> dos)
         {
-            if (uno[x] == dos[i])
+            //Si los elementos que tiene A estan en B.
+            int auxil = 0;
+            for (int i = 0; i < dos.Count; i++)
             {
-                auxil++;
+                for (int x = 0; x < uno.Count; x++)
+                {
+                    if (uno[x] == dos[i])
+                    {
+                        auxil++;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+
+            if (uno.Count == auxil)
+            {
+                label15.Text = "Todos los elementos se encontraron.";
             }
             else
             {
-                continue;
+                label15.Text = "Todos los elementos se NO encontraron.";
             }
         }
-    }
 
-    if (uno.Count == auxil)
-    {
-        label15.Text = "Todos los elementos se encontraron.";
-    }
-    else
-    {
-        label15.Text = "Todos los elementos se NO encontraron.";
-    }
-}
-
-private void interseccion(List<String> uno, List<String> dos)
-{
-    //Metodo para unir dos listas.
-    IEnumerable<String> resultadoI = uno.Intersect(dos);
-    //Ciclo para imprimir el resultado.
-    resultadoI.Count();
-    if (resultadoI.Count().Equals(0))
-    {
-        label15.Text = "No hay valores.";
-    }
-    foreach (String valor in resultadoI)
-    {
-        label15.Text += valor + ", ";
-    }
-}
-
-private void diferencia(List<String> uno, List<String> dos)
-{
-    IEnumerable<String> resultadoD = uno.Except(dos);
-    //Ciclo para imprimir el resultado.
-    foreach (String valor in resultadoD)
-    {
-        label15.Text += valor + ", ";
-    }
-
-}
-
-private void potencia(List<String> uno)
-{
-    List<String> resultadoP = new List<String>();
-    for (int i = 0; i < uno.Count; i++)
-    {
-        resultadoP.Add(uno[i]);
-    }
-    int contador = 1;
-    for (int i = 0; i < uno.Count; i++)
-    {
-        for (int w = contador; w < uno.Count; w++)
+        private void interseccion(List<String> uno, List<String> dos)
         {
-            resultadoP.Add(uno[i] + uno[w]);
+            //Metodo para unir dos listas.
+            IEnumerable<String> resultadoI = uno.Intersect(dos);
+            //Ciclo para imprimir el resultado.
+            resultadoI.Count();
+            if (resultadoI.Count().Equals(0))
+            {
+                label15.Text = "No hay valores.";
+            }
+            foreach (String valor in resultadoI)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
+
+        private void diferencia(List<String> uno, List<String> dos)
+        {
+            IEnumerable<String> resultadoD = uno.Except(dos);
+            //Ciclo para imprimir el resultado.
+            foreach (String valor in resultadoD)
+            {
+                label15.Text += valor + ", ";
+            }
 
         }
-        contador++;
-    }
-    foreach (String valor in resultadoP)
-    {
-        label15.Text += valor + ", ";
-    }
-}
 
-private void producto(List<String> uno, List<String> dos)
-{
-    List<String> resultadoP = new List<String>();
-    for (int f = 0; f < uno.Count; f++)
-    {
-        for (int o = 0; o < dos.Count; o++)
+        private void potencia(List<String> uno)
         {
-            resultadoP.Add(dos[o] + uno[f]);
-        }
-    }
-    foreach (String valor in resultadoP)
-    {
-        label15.Text += valor + ", ";
-    }
-}
+            List<String> resultadoP = new List<String>();
+            for (int i = 0; i < uno.Count; i++)
+            {
+                resultadoP.Add(uno[i]);
+            }
+            int contador = 1;
+            for (int i = 0; i < uno.Count; i++)
+            {
+                for (int w = contador; w < uno.Count; w++)
+                {
+                    resultadoP.Add(uno[i] + uno[w]);
 
-private void concatenacion(List<String> uno, List<String> dos)
-{
-    //Metodo para unir dos listas.
-    IEnumerable<String> resultadoU = dos.Concat(uno);
-    //Ciclo para imprimir el resultado.
-    foreach (String valor in resultadoU)
-    {
-        label15.Text += valor + ", ";
-    }
-}
+                }
+                contador++;
+            }
+            foreach (String valor in resultadoP)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
 
-private void Form1_Load(object sender, EventArgs e)
-{
+        private void producto(List<String> uno, List<String> dos)
+        {
+            List<String> resultadoP = new List<String>();
+            for (int f = 0; f < uno.Count; f++)
+            {
+                for (int o = 0; o < dos.Count; o++)
+                {
+                    resultadoP.Add(dos[o] + uno[f]);
+                }
+            }
+            foreach (String valor in resultadoP)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
 
-}
+        private void concatenacion(List<String> uno, List<String> dos)
+        {
+            //Metodo para unir dos listas.
+            IEnumerable<String> resultadoU = dos.Concat(uno);
+            //Ciclo para imprimir el resultado.
+            foreach (String valor in resultadoU)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
 
-private void btnUniverso_Click(object sender, EventArgs e)
-{
-    auxiliar = "";
-    //Guardamos en la variable el valor introducido por el usuario.
-    auxiliar = InputDialog.mostrar("Introduzca algun dato");
-    //Lo guardamos en nuestra lista correspondiente.
-    universo.Add(auxiliar);
-    //Lo imprimimos para ver el valor.
-    label4.Text += auxiliar + "\n";
-}
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-private void btnA_Click(object sender, EventArgs e)
-{
-    auxiliar = "";
-    //Guardamos en la variable el valor introducido por el usuario.
-    auxiliar = InputDialog.mostrar("Introduzca algun dato");
-    //Lo guardamos en nuestra lista correspondiente.
-    mundoA.Add(auxiliar);
-    //Lo imprimimos para ver el valor.
-    label5.Text += auxiliar + "\n";
-}
+        }
 
-private void btnB_Click(object sender, EventArgs e)
-{
-    auxiliar = "";
-    //Guardamos en la variable el valor introducido por el usuario.
-    auxiliar = InputDialog.mostrar("Introduzca algun dato");
-    //Lo guardamos en nuestra lista correspondiente.
-    mundoB.Add(auxiliar);
-    //Lo imprimimos para ver el valor.
-    label7.Text += auxiliar + "\n";
-}
+        private void btnUniverso_Click(object sender, EventArgs e)
+        {
+            auxiliar = "";
+            //Guardamos en la variable el valor introducido por el usuario.
+            auxiliar = InputDialog.mostrar("Introduzca algun dato");
+            //Lo guardamos en nuestra lista correspondiente.
+            universo.Add(auxiliar);
+            //Lo imprimimos para ver el valor.
+            label4.Text += auxiliar + "\n";
+        }
 
-private void button1_Click(object sender, EventArgs e)
-{
-    operacionA = true;
-    txtOpera.Text += "A";
+        private void btnA_Click(object sender, EventArgs e)
+        {
+            auxiliar = "";
+            //Guardamos en la variable el valor introducido por el usuario.
+            auxiliar = InputDialog.mostrar("Introduzca algun dato");
+            //Lo guardamos en nuestra lista correspondiente.
+            mundoA.Add(auxiliar);
+            //Lo imprimimos para ver el valor.
+            label5.Text += auxiliar + "\n";
+        }
 
-    if (primero == "")
-    {
-        primero = "A";
-    }
-    else if (segundo == "")
-    {
-        segundo = "A";
-    }
-    else
-    {
-        tercero = "A";
-    }
+        private void btnB_Click(object sender, EventArgs e)
+        {
+            auxiliar = "";
+            //Guardamos en la variable el valor introducido por el usuario.
+            auxiliar = InputDialog.mostrar("Introduzca algun dato");
+            //Lo guardamos en nuestra lista correspondiente.
+            mundoB.Add(auxiliar);
+            //Lo imprimimos para ver el valor.
+            label7.Text += auxiliar + "\n";
+        }
 
-}
+        private void button1_Click(object sender, EventArgs e)
+        {
+            operacionA = true;
+            txtOpera.Text += "A";
 
-private void button2_Click(object sender, EventArgs e)
-{
-    operacionB = true;
-    txtOpera.Text += "B";
-    if (primero == "")
-    {
-        primero = "B";
-    }
-    else if (segundo == "")
-    {
-        segundo = "B";
-    }
-    else
-    {
-        tercero = "B";
-    }
-}
+            if (primero == "")
+            {
+                primero = "A";
+            }
+            else if (segundo == "")
+            {
+                segundo = "A";
+            }
+            else
+            {
+                tercero = "A";
+            }
 
-private void button14_Click(object sender, EventArgs e)
-{
-    label15.Text = "";
-    txtOpera.Text = "";
-}
+        }
 
-private void button3_Click(object sender, EventArgs e)
-{
-    operacionC = true;
-    txtOpera.Text += "C";
-    if (primero == "")
-    {
-        primero = "C";
-    }
-    else if (segundo == "")
-    {
-        segundo = "C";
-    }
-    else
-    {
-        tercero = "C";
-    }
-}
+        private void button2_Click(object sender, EventArgs e)
+        {
+            operacionB = true;
+            txtOpera.Text += "B";
+            if (primero == "")
+            {
+                primero = "B";
+            }
+            else if (segundo == "")
+            {
+                segundo = "B";
+            }
+            else
+            {
+                tercero = "B";
+            }
+        }
 
-private void button13_Click(object sender, EventArgs e)
-{
-    if (operacionUnion)
-    {
-        auxiliarUnion();
-    }
-    else if (operacionComple)
-    {
-        auxiliarComplemento();
-    }
-    else if (operacionInter)
-    {
-        auxiliarInterseccion();
-    }
-    else if (operacionDiferen)
-    {
-        auxiliarDiferencia();
-    }
-    else if (operacionConca)
-    {
-        auxiliarConcatenacion();
-    }
-    else if (operacionProducto)
-    {
-        auxiliarProducto();
-    }
-    else if (operacionPotencia)
-    {
-        auxiliarPotencia();
-    }
-    else if (operacionPertenencia)
-    {
-        auxiliarPertenencia();
-    }
-    else if (operacionPertenencia2)
-    {
-        auxiliarPertenencia2();
-    }
-    primero = ""; segundo = ""; tercero = "";
-    operacionA = false; operacionB = false; operacionC = false;
-}
+        private void button14_Click(object sender, EventArgs e)
+        {
+            label15.Text = "";
+            txtOpera.Text = "";
+        }
 
-private void auxiliarUnion()
-{
-    if (operacionA && operacionB)
-    {
-        if (primero == "A" && segundo == "B")
+        private void button3_Click(object sender, EventArgs e)
         {
-            union(mundoA, mundoB);
+            operacionC = true;
+            txtOpera.Text += "C";
+            if (primero == "")
+            {
+                primero = "C";
+            }
+            else if (segundo == "")
+            {
+                segundo = "C";
+            }
+            else
+            {
+                tercero = "C";
+            }
         }
-        else
-        {
-            union(mundoB, mundoA);
-        }
-    }
-    else if (operacionA && operacionC)
-    {
-        if (primero == "A" && segundo == "C")
-        {
-            union(mundoA, mundoC);
-        }
-        else
-        {
-            union(mundoC, mundoA);
-        }
-    }
-    else
-    {
-        if (primero == "B" && segundo == "C")
-        {
-            union(mundoB, mundoC);
-        }
-        else
-        {
-            union(mundoC, mundoB);
-        }
-    }
-}
 
-private void auxiliarPertenencia()
-{
-    if (operacionA && operacionB)
-    {
-        if (primero == "A" && segundo == "B")
+        private void button13_Click(object sender, EventArgs e)
         {
-            pertenencia(mundoA, mundoB);
+            if (operacionUnion)
+            {
+                auxiliarUnion();
+            }
+            else if (operacionComple)
+            {
+                auxiliarComplemento();
+            }
+            else if (operacionInter)
+            {
+                auxiliarInterseccion();
+            }
+            else if (operacionDiferen)
+            {
+                auxiliarDiferencia();
+            }
+            else if (operacionConca)
+            {
+                auxiliarConcatenacion();
+            }
+            else if (operacionProducto)
+            {
+                auxiliarProducto();
+            }
+            else if (operacionPotencia)
+            {
+                auxiliarPotencia();
+            }
+            else if (operacionPertenencia)
+            {
+                auxiliarPertenencia();
+            }
+            else if (operacionPertenencia2)
+            {
+                auxiliarPertenencia2();
+            }
+            primero = ""; segundo = ""; tercero = "";
+            operacionA = false; operacionB = false; operacionC = false;
         }
-        else if (primero == "B" && segundo == "A")
-        {
-            pertenencia(mundoB, mundoA);
-        }
-    }
-    else if (operacionA && operacionC)
-    {
-        if (primero == "A" && segundo == "C")
-        {
-            pertenencia(mundoA, mundoC);
-        }
-        else if (primero == "C" && segundo == "A")
-        {
-            pertenencia(mundoC, mundoA);
-        }
-    }
-    else
-    {
-        if (primero == "B" && segundo == "C")
-        {
-            pertenencia(mundoB, mundoC);
-        }
-        else if (primero == "C" && segundo == "B")
-        {
-            pertenencia(mundoC, mundoB);
-        }
-    }
 
-}
+        private void auxiliarUnion()
+        {
+            if (operacionA && operacionB)
+            {
+                if (primero == "A" && segundo == "B")
+                {
+                    union(mundoA, mundoB);
+                }
+                else
+                {
+                    union(mundoB, mundoA);
+                }
+            }
+            else if (operacionA && operacionC)
+            {
+                if (primero == "A" && segundo == "C")
+                {
+                    union(mundoA, mundoC);
+                }
+                else
+                {
+                    union(mundoC, mundoA);
+                }
+            }
+            else
+            {
+                if (primero == "B" && segundo == "C")
+                {
+                    union(mundoB, mundoC);
+                }
+                else
+                {
+                    union(mundoC, mundoB);
+                }
+            }
+        }
 
-private void auxiliarPertenencia2()
-{
-    if (operacionA && operacionB)
-    {
-        if (primero == "A" && segundo == "B")
+        private void auxiliarPertenencia()
         {
-            pertenencia(mundoB, mundoA);
-        }
-        else if (primero == "B" && segundo == "A")
-        {
-            pertenencia(mundoA, mundoB);
-        }
-    }
-    else if (operacionA && operacionC)
-    {
-        if (primero == "A" && segundo == "C")
-        {
-            pertenencia(mundoC, mundoA);
-        }
-        else if (primero == "C" && segundo == "A")
-        {
-            pertenencia(mundoA, mundoC);
-        }
-    }
-    else
-    {
-        if (primero == "B" && segundo == "C")
-        {
-            pertenencia(mundoC, mundoB);
-        }
-        else if (primero == "C" && segundo == "B")
-        {
-            pertenencia(mundoB, mundoC);
-        }
-    }
+            if (operacionA && operacionB)
+            {
+                if (primero == "A" && segundo == "B")
+                {
+                    pertenencia(mundoA, mundoB);
+                }
+                else if (primero == "B" && segundo == "A")
+                {
+                    pertenencia(mundoB, mundoA);
+                }
+            }
+            else if (operacionA && operacionC)
+            {
+                if (primero == "A" && segundo == "C")
+                {
+                    pertenencia(mundoA, mundoC);
+                }
+                else if (primero == "C" && segundo == "A")
+                {
+                    pertenencia(mundoC, mundoA);
+                }
+            }
+            else
+            {
+                if (primero == "B" && segundo == "C")
+                {
+                    pertenencia(mundoB, mundoC);
+                }
+                else if (primero == "C" && segundo == "B")
+                {
+                    pertenencia(mundoC, mundoB);
+                }
+            }
 
-}
+        }
 
-private void auxiliarConcatenacion()
-{
-    if (operacionA && operacionB)
-    {
-        if (primero == "A" && segundo == "B")
+        private void auxiliarPertenencia2()
         {
-            concatenacion(mundoA, mundoB);
-        }
-        else
-        {
-            concatenacion(mundoB, mundoA);
-        }
-    }
-    else if (operacionA && operacionC)
-    {
-        if (primero == "A" && segundo == "C")
-        {
-            concatenacion(mundoA, mundoC);
-        }
-        else
-        {
-            concatenacion(mundoC, mundoA);
-        }
-    }
-    else
-    {
-        if (primero == "B" && segundo == "C")
-        {
-            concatenacion(mundoB, mundoC);
-        }
-        else
-        {
-            concatenacion(mundoC, mundoB);
-        }
-    }
-}
+            if (operacionA && operacionB)
+            {
+                if (primero == "A" && segundo == "B")
+                {
+                    pertenencia(mundoB, mundoA);
+                }
+                else if (primero == "B" && segundo == "A")
+                {
+                    pertenencia(mundoA, mundoB);
+                }
+            }
+            else if (operacionA && operacionC)
+            {
+                if (primero == "A" && segundo == "C")
+                {
+                    pertenencia(mundoC, mundoA);
+                }
+                else if (primero == "C" && segundo == "A")
+                {
+                    pertenencia(mundoA, mundoC);
+                }
+            }
+            else
+            {
+                if (primero == "B" && segundo == "C")
+                {
+                    pertenencia(mundoC, mundoB);
+                }
+                else if (primero == "C" && segundo == "B")
+                {
+                    pertenencia(mundoB, mundoC);
+                }
+            }
 
-private void auxiliarProducto()
-{
-    if (operacionA && operacionB)
-    {
-        if (primero == "A" && segundo == "B")
-        {
-            producto(mundoA, mundoB);
         }
-        else
+
+        private void auxiliarConcatenacion()
         {
-            producto(mundoB, mundoA);
+            if (operacionA && operacionB)
+            {
+                if (primero == "A" && segundo == "B")
+                {
+                    concatenacion(mundoA, mundoB);
+                }
+                else
+                {
+                    concatenacion(mundoB, mundoA);
+                }
+            }
+            else if (operacionA && operacionC)
+            {
+                if (primero == "A" && segundo == "C")
+                {
+                    concatenacion(mundoA, mundoC);
+                }
+                else
+                {
+                    concatenacion(mundoC, mundoA);
+                }
+            }
+            else
+            {
+                if (primero == "B" && segundo == "C")
+                {
+                    concatenacion(mundoB, mundoC);
+                }
+                else
+                {
+                    concatenacion(mundoC, mundoB);
+                }
+            }
         }
-    }
-    else if (operacionA && operacionC)
-    {
-        if (primero == "A" && segundo == "C")
+
+        private void auxiliarProducto()
         {
-            producto(mundoA, mundoC);
+            if (operacionA && operacionB)
+            {
+                if (primero == "A" && segundo == "B")
+                {
+                    producto(mundoA, mundoB);
+                }
+                else
+                {
+                    producto(mundoB, mundoA);
+                }
+            }
+            else if (operacionA && operacionC)
+            {
+                if (primero == "A" && segundo == "C")
+                {
+                    producto(mundoA, mundoC);
+                }
+                else
+                {
+                    producto(mundoC, mundoA);
+                }
+            }
+            else
+            {
+                if (primero == "B" && segundo == "C")
+                {
+                    producto(mundoB, mundoC);
+                }
+                else
+                {
+                    producto(mundoC, mundoB);
+                }
+            }
         }
-        else
+
+        private void auxiliarDiferencia()
         {
-            producto(mundoC, mundoA);
+            if (operacionA && operacionB)
+            {
+                if (primero == "A" && segundo == "B")
+                {
+                    diferencia(mundoA, mundoB);
+                }
+                else if (primero == "B" && segundo == "A")
+                {
+                    diferencia(mundoB, mundoA);
+                }
+            }
+            else if (operacionA && operacionC)
+            {
+                if (primero == "A" && segundo == "C")
+                {
+                    diferencia(mundoA, mundoC);
+                }
+                else if (primero == "C" && segundo == "A")
+                {
+                    diferencia(mundoC, mundoA);
+                }
+            }
+            else
+            {
+                if (primero == "B" && segundo == "C")
+                {
+                    diferencia(mundoB, mundoC);
+                }
+                else if (primero == "C" && segundo == "B")
+                {
+                    diferencia(mundoC, mundoB);
+                }
+            }
+
         }
-    }
-    else
-    {
-        if (primero == "B" && segundo == "C")
+
+        private void auxiliarInterseccion()
         {
-            producto(mundoB, mundoC);
+            if (operacionA && operacionB)
+            {
+                interseccion(mundoA, mundoB);
+            }
+            else if (operacionA && operacionC)
+            {
+                interseccion(mundoA, mundoC);
+            }
+            else
+            {
+                interseccion(mundoB, mundoC);
+            }
         }
-        else
+
+        private void auxiliarComplemento()
         {
-            producto(mundoC, mundoB);
+            if (operacionA)
+            {
+                complemento(mundoA);
+            }
+            else if (operacionB)
+            {
+                complemento(mundoB);
+            }
+            else
+            {
+                complemento(mundoC);
+            }
         }
-    }
-}
 
-private void auxiliarDiferencia()
-{
-    if (operacionA && operacionB)
-    {
-        if (primero == "A" && segundo == "B")
+        private void auxiliarPotencia()
         {
-            diferencia(mundoA, mundoB);
+            if (operacionA)
+            {
+                potencia(mundoA);
+            }
+            else if (operacionB)
+            {
+                potencia(mundoB);
+            }
+            else
+            {
+                potencia(mundoC);
+            }
         }
-        else if (primero == "B" && segundo == "A")
+
+        private void button4_Click(object sender, EventArgs e)
         {
-            diferencia(mundoB, mundoA);
+            txtOpera.Text += "'";
+            operacionComple = true;
         }
-    }
-    else if (operacionA && operacionC)
-    {
-        if (primero == "A" && segundo == "C")
+
+        private void button5_Click(object sender, EventArgs e)
         {
-            diferencia(mundoA, mundoC);
+            txtOpera.Text += "∪ ";
+            operacionUnion = true;
         }
-        else if (primero == "C" && segundo == "A")
+
+        private void button6_Click(object sender, EventArgs e)
         {
-            diferencia(mundoC, mundoA);
+            txtOpera.Text += "∩";
+            operacionInter = true;
         }
-    }
-    else
-    {
-        if (primero == "B" && segundo == "C")
+
+        private void button7_Click(object sender, EventArgs e)
         {
-            diferencia(mundoB, mundoC);
+            txtOpera.Text += "--";
+            operacionDiferen = true;
         }
-        else if (primero == "C" && segundo == "B")
+
+        private void button10_Click(object sender, EventArgs e)
         {
-            diferencia(mundoC, mundoB);
+            txtOpera.Text += "x";
+            operacionProducto = true;
         }
-    }
 
-}
+        private void button9_Click(object sender, EventArgs e)
+        {
+            txtOpera.Text += "P()";
+            operacionPotencia = true;
+        }
 
-private void auxiliarInterseccion()
-{
-    if (operacionA && operacionB)
-    {
-        interseccion(mundoA, mundoB);
-    }
-    else if (operacionA && operacionC)
-    {
-        interseccion(mundoA, mundoC);
-    }
-    else
-    {
-        interseccion(mundoB, mundoC);
-    }
-}
+        private void button11_Click(object sender, EventArgs e)
+        {
+            //Si los elementos que tiene A estan en B.
+            txtOpera.Text += "⊆ ";
+            operacionPertenencia = true;
+        }
 
-private void auxiliarComplemento()
-{
-    if (operacionA)
-    {
-        complemento(mundoA);
-    }
-    else if (operacionB)
-    {
-        complemento(mundoB);
-    }
-    else
-    {
-        complemento(mundoC);
-    }
-}
+        private void button8_Click(object sender, EventArgs e)
+        {
+            txtOpera.Text += "Con";
+            operacionConca = true;
+        }
 
-private void auxiliarPotencia()
-{
-    if (operacionA)
-    {
-        potencia(mundoA);
-    }
-    else if (operacionB)
-    {
-        potencia(mundoB);
-    }
-    else
-    {
-        potencia(mundoC);
-    }
-}
+        private void btnC_Click(object sender, EventArgs e)
+        {
+            auxiliar = "";
+            //Guardamos en la variable el valor introducido por el usuario.
+            auxiliar = InputDialog.mostrar("Introduzca algun dato");
+            //Lo guardamos en nuestra lista correspondiente.
+            mundoC.Add(auxiliar);
+            //Lo imprimimos para ver el valor.
+            label9.Text += auxiliar + "\n";
+        }
 
-private void button4_Click(object sender, EventArgs e)
-{
-    txtOpera.Text += "'";
-    operacionComple = true;
-}
-
-private void button5_Click(object sender, EventArgs e)
-{
-    txtOpera.Text += "∪ ";
-    operacionUnion = true;
-}
-
-private void button6_Click(object sender, EventArgs e)
-{
-    txtOpera.Text += "∩";
-    operacionInter = true;
-}
-
-private void button7_Click(object sender, EventArgs e)
-{
-    txtOpera.Text += "--";
-    operacionDiferen = true;
-}
-
-private void button10_Click(object sender, EventArgs e)
-{
-    txtOpera.Text += "x";
-    operacionProducto = true;
-}
-
-private void button9_Click(object sender, EventArgs e)
-{
-    txtOpera.Text += "P()";
-    operacionPotencia = true;
-}
-
-private void button11_Click(object sender, EventArgs e)
-{
-    //Si los elementos que tiene A estan en B.
-    txtOpera.Text += "⊆ ";
-    operacionPertenencia = true;
-}
-
-private void button8_Click(object sender, EventArgs e)
-{
-    txtOpera.Text += "Con";
-    operacionConca = true;
-}
-
-private void btnC_Click(object sender, EventArgs e)
-{
-    auxiliar = "";
-    //Guardamos en la variable el valor introducido por el usuario.
-    auxiliar = InputDialog.mostrar("Introduzca algun dato");
-    //Lo guardamos en nuestra lista correspondiente.
-    mundoC.Add(auxiliar);
-    //Lo imprimimos para ver el valor.
-    label9.Text += auxiliar + "\n";
-}
-
-private void button12_Click(object sender, EventArgs e)
-{
-    //Si los elementos que tiene B estan en A.
-    txtOpera.Text += "⊃";
-    operacionPertenencia2 = true;
-}
+        private void button12_Click(object sender, EventArgs e)
+        {
+            //Si los elementos que tiene B estan en A.
+            txtOpera.Text += "⊃";
+            operacionPertenencia2 = true;
+        }
 
     }
 }
