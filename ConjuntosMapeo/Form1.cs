@@ -25,6 +25,7 @@ namespace ConjuntosMapeo
         List<String> mundoA = new List<String>();
         List<String> mundoB = new List<String>();
         List<String> mundoC = new List<String>();
+        List<String> resultados = new List<String>();
         //Declarancion de un auxiliar.
         String auxiliar, primero, segundo, tercero, operadorPrimero, operadorSegundo;
         //Declaracion de variables auxiliares.
@@ -32,20 +33,24 @@ namespace ConjuntosMapeo
                 operacionConca, operacionProducto, operacionPotencia, operacionPertenencia, operacionPertenencia2;
         //Metodo para hacer operaciones en listas.
         IEnumerable<String> resultadoTotal;
-        List<String> resultados;
 
         private void imprimir()
         {
+            //Con el fin de que los resultados no se muestren en un solo Label.
             string aux = label15.Text;
+            //En caso de que este vacion, utiliza este.
             if (aux.Length == 0)
             {
+                //Imprime los valores de la lista.
                 foreach (String valor in resultadoTotal)
                 {
                     label15.Text += valor + ", ";
                 }
             }
+            //En caso de que este lleno, utiliza este.
             else
             {
+                //Imprime los valores de la lista.
                 foreach (String valor in resultadoTotal)
                 {
                     label16.Text += valor + ", ";
@@ -55,28 +60,23 @@ namespace ConjuntosMapeo
 
         private void imprimir2()
         {
+            //Imprime los valores de la lista, esta es una lista diferente a la anterior.
             foreach (String valor in resultados)
             {
                 label15.Text += valor + ", ";
             }
         }
 
-        private void convertidor()
-        {
-            for (int h = 0; h < resultadoTotal.Count(); h++)
-            {
-                //resultados.Add(resultadoTotal.Concat);
-            }
-        }
-
         private void union(List<String> uno, List<String> dos)
         {
+            //Recibe de parametros dos listas.
             //Metodo para unir dos listas.
             resultadoTotal = uno.Union(dos);
         }
 
         private void union2(IEnumerable<String> uno, List<String> dos)
         {
+            //Recibe de parametros dos listas, estas son diferentes entre si.
             //Metodo para unir dos listas.
             resultadoTotal = uno.Union(dos);
         }
@@ -106,151 +106,151 @@ namespace ConjuntosMapeo
             }
             */
 
-
+            //Recibe de parametro una lista.
             resultadoTotal = universo.Except(uno);
-            //Ciclo para imprimir el resultado.
-
         }
 
         private void complemento2(IEnumerable<String> uno)
         {
-            /*List<String> resultadoC = new List<String>();
-            string palabra = "";
-            String a;
-            for (int s = 0; s < universo.Count; s++)
-            {
-                for (int e = 0; e < uno.Count; e++)
-                {
-                    if (universo[s].Equals(uno[e]))
-                    {
-                        //  s++;
-                        // String a = universo[s];
-                    }
-                    else
-                    {
-                        // resultadoC.Add(universo[s]);
-                        a = universo[s];
-                        e++;
-                    }
-                }
-                resultadoC.Add(a);
-            }
-            */
-
-
+            //Recibe de parametro una lista, este metodo recibe una lista diferrente a la anteriror.
             resultadoTotal = universo.Except(uno);
-            //Ciclo para imprimir el resultado.
         }
 
         private void pertenencia(List<String> uno, List<String> dos)
         {
+            //Recibe de parametros dos listas.
             //Si los elementos que tiene A estan en B.
+            //Declaramos un auxiliar.
             int auxil = 0;
+            //Ciclo para recorrer el segundo conjunto.
             for (int i = 0; i < dos.Count; i++)
             {
+                //Ciclo para recorrer el primer conjunto.
                 for (int x = 0; x < uno.Count; x++)
                 {
+                    //Para conocer si los valores son iguales.
                     if (uno[x] == dos[i])
                     {
+                        //Si lo son aumentamos una unidad a nuestra variable.
                         auxil++;
                     }
+                    //En caso de ser diferentes, sigue con el ciclo.
                     else
                     {
                         continue;
                     }
                 }
             }
-
+            //Si el tamaño de nuestro conjunto es igual a nuestro auxiliar.
             if (uno.Count == auxil)
             {
+                //Entonces los elementos de A estan contenidos en B.
                 label16.Text = "Todos los elementos se encontraron.";
             }
             else
             {
+                //Entonces los elementos de A no estan contenidos en B.
                 label16.Text = "Todos los elementos NO encontraron.";
             }
         }
 
         private void interseccion(List<String> uno, List<String> dos)
         {
-            //Metodo para unir dos listas.
+            //Recibe como parametros dos listas.
+            //Metodo para encontrar la interseccion de dos listas.
             resultadoTotal = uno.Intersect(dos);
-            //Ciclo para imprimir el resultado.
+            //Ciclo para saber si en caso de que no se encuentre intersecciones.
             if (resultadoTotal.Count().Equals(0))
             {
                 label16.Text = "No hay valores.";
             }
-
         }
 
         private void interseccion2(IEnumerable<String> uno, List<String> dos)
         {
-            //Metodo para unir dos listas.
+            //Recibe como parametros dos listas, que son diferentes entre si.
+            //Metodo para encontrar la interseccion de dos listas.
             resultadoTotal = uno.Intersect(dos);
-            //Ciclo para imprimir el resultado.
+            //Ciclo para saber si en caso de que no se encuentre intersecciones.
             if (resultadoTotal.Count().Equals(0))
             {
                 label16.Text = "No hay valores.";
             }
+            //Metodo para imprimir los resultados finales.
             imprimir();
         }
 
         private void diferencia(List<String> uno, List<String> dos)
         {
+            //Recibe como parametros dos listas.
+            //Metodo para encontrar las diferencias de dos listas.
             resultadoTotal = uno.Except(dos);
-            //Ciclo para imprimir el resultado.
-
         }
 
         private void diferencia2(IEnumerable<String> uno, List<String> dos)
         {
+            //Recibe como parametros dos listas, que son diferentes entre si.
+            //Metodo para encontrar la diferencia entre dos listas.
             resultadoTotal = uno.Except(dos);
-            //Ciclo para imprimir el resultado.
-
         }
 
         private void potencia(List<String> uno)
         {
+            //Recibe como parametro una lista.
+            //Ciclo para guardos los valores de esta lista.
             for (int i = 0; i < uno.Count; i++)
             {
                 resultados.Add(uno[i]);
             }
+            //Auxiliar para ir recorriendo el vector en la posicion deseada.
             int contador = 1;
+            //Ciclo que recorre el conjunto.
             for (int i = 0; i < uno.Count; i++)
             {
+                //Ciclo que recorre el mismo conjunto.
                 for (int w = contador; w < uno.Count; w++)
                 {
+                    //Guardamos los valores.
                     resultados.Add(uno[i] + uno[w]);
-
                 }
+                //Aumentamos nuestra variable, con el fin de que la proxima vez que trabaje el ciclo 2,
+                //no empiece en 0.
                 contador++;
             }
+            //Ciclo para imprimir los resultados.
             imprimir2();
         }
 
         private void producto(List<String> uno, List<String> dos)
         {
+            //Recibe como parametros dos listas.
+            //Ciclo para recorrer el primer ciclo.
             for (int f = 0; f < uno.Count; f++)
             {
+                //Ciclo para recorrer el segundo ciclo.
                 for (int o = 0; o < dos.Count; o++)
                 {
+                    //Guardamos los valores.
                     resultados.Add(dos[o] + uno[f]);
                 }
             }
+            //Imprimimos los valores.
             imprimir2();
         }
 
         private void concatenacion(List<String> uno, List<String> dos)
         {
-            //Metodo para unir dos listas.
+            //Recibe como parametros dos listas.
+            //Metodo para concatenar dos listas.
             resultadoTotal = dos.Concat(uno);
-            //Ciclo para imprimir el resultado.
         }
 
         private void concatenacion2(IEnumerable<String> uno, List<String> dos)
         {
-            //Metodo para unir dos listas.
+            //Recibe como parametros dos listas, diferentes entre si.
+            //Metodo para concatenar dos listas.
             resultadoTotal = dos.Concat(uno);
+            //Metodo para imprimir el resultado.
             imprimir();
         }
 
@@ -261,9 +261,10 @@ namespace ConjuntosMapeo
 
         private void btnUniverso_Click(object sender, EventArgs e)
         {
+            //Vaciamos nuestra variable.
             auxiliar = "";
             //Guardamos en la variable el valor introducido por el usuario.
-            auxiliar = InputDialog.mostrar("Introduzca algun dato");
+            auxiliar = InputDialog.mostrar("Introduzca algun dato para el universo");
             //Lo guardamos en nuestra lista correspondiente.
             universo.Add(auxiliar);
             //Lo imprimimos para ver el valor.
@@ -272,9 +273,10 @@ namespace ConjuntosMapeo
 
         private void btnA_Click(object sender, EventArgs e)
         {
+            //Vaciamos nuestra variable.
             auxiliar = "";
             //Guardamos en la variable el valor introducido por el usuario.
-            auxiliar = InputDialog.mostrar("Introduzca algun dato");
+            auxiliar = InputDialog.mostrar("Introduzca algun dato para el conjunto A");
             //Lo guardamos en nuestra lista correspondiente.
             mundoA.Add(auxiliar);
             //Lo imprimimos para ver el valor.
@@ -283,9 +285,10 @@ namespace ConjuntosMapeo
 
         private void btnB_Click(object sender, EventArgs e)
         {
+            //Vaciamos nuestra variable.
             auxiliar = "";
             //Guardamos en la variable el valor introducido por el usuario.
-            auxiliar = InputDialog.mostrar("Introduzca algun dato");
+            auxiliar = InputDialog.mostrar("Introduzca algun dato para el conjunto B");
             //Lo guardamos en nuestra lista correspondiente.
             mundoB.Add(auxiliar);
             //Lo imprimimos para ver el valor.
@@ -294,9 +297,11 @@ namespace ConjuntosMapeo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Volvemos true nuesta variable
             operacionA = true;
+            //Imprimimos en pantalla.
             txtOpera.Text += "A";
-
+            //Para conocer que conjunto presiono primero.
             if (primero == "")
             {
                 primero = "A";
@@ -309,13 +314,15 @@ namespace ConjuntosMapeo
             {
                 tercero = "A";
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Volvemos true nuesta variable
             operacionB = true;
+            //Imprimimos en pantalla.
             txtOpera.Text += "B";
+            //Para conocer que conjunto presiono primero.
             if (primero == "")
             {
                 primero = "B";
@@ -332,12 +339,18 @@ namespace ConjuntosMapeo
 
         private void button14_Click(object sender, EventArgs e)
         {
+            //Limpiamos todas nuestras variables.
             label15.Text = "";
             label16.Text = "";
             txtOpera.Text = "";
-            primero = ""; segundo = ""; tercero = "";
-            operacionA = false; operacionB = false; operacionC = false;
-            operadorPrimero = ""; operadorSegundo = "";
+            primero = "";
+            segundo = "";
+            tercero = "";
+            operacionA = false;
+            operacionB = false;
+            operacionC = false;
+            operadorPrimero = "";
+            operadorSegundo = "";
             operacionUnion = false;
             operacionComple = false;
             operacionInter = false;
@@ -351,8 +364,11 @@ namespace ConjuntosMapeo
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Volvemos true nuesta variable.
             operacionC = true;
+            //Imprimimos en pantalla.
             txtOpera.Text += "C";
+            //Para conocer que conjunto presiono primero.
             if (primero == "")
             {
                 primero = "C";
@@ -369,6 +385,7 @@ namespace ConjuntosMapeo
 
         private void button13_Click(object sender, EventArgs e)
         {
+            //Para saber cuantas operaciones desea realizar.
             if (radioButton1.Checked)
             {
                 UnaOperacion();
@@ -381,6 +398,7 @@ namespace ConjuntosMapeo
 
         private void UnaOperacion()
         {
+            //Preguntamos que varaible es true, con el fin de conocer que operacion realizar.
             if (operacionUnion)
             {
                 auxiliarUnion();
@@ -424,12 +442,18 @@ namespace ConjuntosMapeo
 
         private void DosOperaciones()
         {
+            //Cuando hacemos dos operaciones, primero llamamos a nuestro metodo para que realice la primera operacion.
             UnaOperacion();
+            //Preguntamos que operacion es la segunda.
             if (operadorSegundo == "Union")
             {
+                //Preguntamos cual el tercer conjunto que introdujo el usuario.
                 if (tercero == "A")
                 {
+                    ///Mandamos al metodo "especial", los resultados de los dos primeros conjuntos y a continuación
+                    // el tercer conjunto.
                     union2(resultadoTotal, mundoA);
+                    //Imprimimos los resultados finales.
                     imprimir();
                 }
                 else if (tercero == "B")
@@ -508,19 +532,21 @@ namespace ConjuntosMapeo
             }
         }
 
-
         private void auxiliarUnion()
         {
+            //Preguntamos que variables son true.
             if (operacionA && operacionB)
             {
+                //Preguntamos el orden en que introdujo los conjuntos.
                 if (primero == "A" && segundo == "B")
                 {
+                    //Enviamos los conjuntos de manera ordenada.
                     union(mundoA, mundoB);
                 }
-                else
+                //En caso de que sea al revez los mandamos en orden.
+                else 
                 {
                     union(mundoB, mundoA);
-
                 }
             }
             else if (operacionA && operacionC)
@@ -528,12 +554,10 @@ namespace ConjuntosMapeo
                 if (primero == "A" && segundo == "C")
                 {
                     union(mundoA, mundoC);
-
                 }
-                else
+                else 
                 {
                     union(mundoC, mundoA);
-
                 }
             }
             else
@@ -541,25 +565,27 @@ namespace ConjuntosMapeo
                 if (primero == "B" && segundo == "C")
                 {
                     union(mundoB, mundoC);
-
                 }
-                else
+                else 
                 {
                     union(mundoC, mundoB);
-
                 }
             }
         }
 
         private void auxiliarPertenencia()
         {
+            //Preguntamos que variables son true.
             if (operacionA && operacionB)
             {
+                //Preguntamos el orden en que introdujo los conjuntos.
                 if (primero == "A" && segundo == "B")
                 {
+                    //Enviamos los conjuntos de manera ordenada.
                     pertenencia(mundoA, mundoB);
                 }
-                else if (primero == "B" && segundo == "A")
+                //En caso de que sea al revez los mandamos en orden.
+                else 
                 {
                     pertenencia(mundoB, mundoA);
                 }
@@ -570,7 +596,7 @@ namespace ConjuntosMapeo
                 {
                     pertenencia(mundoA, mundoC);
                 }
-                else if (primero == "C" && segundo == "A")
+                else 
                 {
                     pertenencia(mundoC, mundoA);
                 }
@@ -581,7 +607,7 @@ namespace ConjuntosMapeo
                 {
                     pertenencia(mundoB, mundoC);
                 }
-                else if (primero == "C" && segundo == "B")
+                else 
                 {
                     pertenencia(mundoC, mundoB);
                 }
@@ -590,13 +616,17 @@ namespace ConjuntosMapeo
 
         private void auxiliarPertenencia2()
         {
+            //Preguntamos que variables son true.
             if (operacionA && operacionB)
             {
+                //Preguntamos el orden en que introdujo los conjuntos.
                 if (primero == "A" && segundo == "B")
                 {
+                    //Enviamos los conjuntos de manera ordenada.
                     pertenencia(mundoB, mundoA);
                 }
-                else if (primero == "B" && segundo == "A")
+                //En caso de que sea al revez los mandamos en orden.
+                else 
                 {
                     pertenencia(mundoA, mundoB);
                 }
@@ -607,7 +637,7 @@ namespace ConjuntosMapeo
                 {
                     pertenencia(mundoC, mundoA);
                 }
-                else if (primero == "C" && segundo == "A")
+                else 
                 {
                     pertenencia(mundoA, mundoC);
                 }
@@ -618,7 +648,7 @@ namespace ConjuntosMapeo
                 {
                     pertenencia(mundoC, mundoB);
                 }
-                else if (primero == "C" && segundo == "B")
+                else 
                 {
                     pertenencia(mundoB, mundoC);
                 }
@@ -627,14 +657,19 @@ namespace ConjuntosMapeo
 
         private void auxiliarConcatenacion()
         {
+            //Preguntamos que variables son true.
             if (operacionA && operacionB)
             {
+                //Preguntamos el orden en que introdujo los conjuntos.
                 if (primero == "A" && segundo == "B")
                 {
+                    //Enviamos los conjuntos de manera ordenada.
                     concatenacion(mundoA, mundoB);
+                    //Imprimimos los valores.
                     imprimir();
                 }
-                else
+                //En caso de que sea al revez los mandamos en orden.
+                else 
                 {
                     concatenacion(mundoB, mundoA);
                     imprimir();
@@ -647,7 +682,7 @@ namespace ConjuntosMapeo
                     concatenacion(mundoA, mundoC);
                     imprimir();
                 }
-                else
+                else 
                 {
                     concatenacion(mundoC, mundoA);
                     imprimir();
@@ -660,7 +695,7 @@ namespace ConjuntosMapeo
                     concatenacion(mundoB, mundoC);
                     imprimir();
                 }
-                else
+                else 
                 {
                     concatenacion(mundoC, mundoB);
                     imprimir();
@@ -670,13 +705,18 @@ namespace ConjuntosMapeo
 
         private void auxiliarProducto()
         {
+            //Preguntamos que variables son true.
             if (operacionA && operacionB)
             {
+                //Preguntamos el orden en que introdujo los conjuntos.
                 if (primero == "A" && segundo == "B")
                 {
+                    //Enviamos los conjuntos de manera ordenada.
                     producto(mundoA, mundoB);
+                    //Imprimimos los resultados.
                     imprimir();
                 }
+                //En caso de que sea al revez los mandamos en orden.
                 else
                 {
                     producto(mundoB, mundoA);
@@ -713,14 +753,19 @@ namespace ConjuntosMapeo
 
         private void auxiliarDiferencia()
         {
+            //Preguntamos que variables son true.
             if (operacionA && operacionB)
             {
+                //Preguntamos el orden en que introdujo los conjuntos.
                 if (primero == "A" && segundo == "B")
                 {
+                    //Enviamos los conjuntos de manera ordenada.
                     diferencia(mundoA, mundoB);
+                    //Imprimios los valroes.
                     imprimir();
                 }
-                else if (primero == "B" && segundo == "A")
+                //En caso de que sea al revez los mandamos en orden.
+                else
                 {
                     diferencia(mundoB, mundoA);
                     imprimir();
@@ -733,7 +778,7 @@ namespace ConjuntosMapeo
                     diferencia(mundoA, mundoC);
                     imprimir();
                 }
-                else if (primero == "C" && segundo == "A")
+                else 
                 {
                     diferencia(mundoC, mundoA);
                     imprimir();
@@ -746,7 +791,7 @@ namespace ConjuntosMapeo
                     diferencia(mundoB, mundoC);
                     imprimir();
                 }
-                else if (primero == "C" && segundo == "B")
+                else 
                 {
                     diferencia(mundoC, mundoB);
                     imprimir();
@@ -757,28 +802,30 @@ namespace ConjuntosMapeo
 
         private void auxiliarInterseccion()
         {
+            //Preguntamos que variables son true.
             if (operacionA && operacionB)
             {
+                //Enviamos los conjuntos de manera ordenada.
                 interseccion(mundoA, mundoB);
-
             }
             else if (operacionA && operacionC)
             {
                 interseccion(mundoA, mundoC);
-
             }
             else
             {
                 interseccion(mundoB, mundoC);
-
             }
         }
 
         private void auxiliarComplemento()
         {
+            //Preguntamos que variables son true.
             if (operacionA)
             {
+                //Enviamos los conjuntos de manera ordenada.
                 complemento(mundoA);
+                //Imprimimos los resultados.
                 imprimir();
             }
             else if (operacionB)
@@ -795,9 +842,12 @@ namespace ConjuntosMapeo
 
         private void auxiliarPotencia()
         {
+            //Preguntamos que variables son true.
             if (operacionA)
             {
+                //Enviamos los conjuntos de manera ordenada.
                 potencia(mundoA);
+                //Imprimimos los resultados.
                 imprimir();
             }
             else if (operacionB)
@@ -814,8 +864,11 @@ namespace ConjuntosMapeo
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //Imprimimos en pantalla.
             txtOpera.Text += "'";
+            //Volvemos true nuesta variable.
             operacionComple = true;
+            //Para conocer que conjunto presiono primero.
             if (operadorPrimero == "")
             {
                 operadorPrimero = "Complemento";
@@ -828,8 +881,11 @@ namespace ConjuntosMapeo
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //Imprimimos en pantalla.
             txtOpera.Text += "∪ ";
+            //Volvemos true nuesta variable.
             operacionUnion = true;
+            //Para conocer que conjunto presiono primero.
             if (operadorPrimero == "")
             {
                 operadorPrimero = "Union";
@@ -842,8 +898,11 @@ namespace ConjuntosMapeo
 
         private void button6_Click(object sender, EventArgs e)
         {
+            //Imprimimos en pantalla.
             txtOpera.Text += "∩";
+            //Volvemos true nuesta variable.
             operacionInter = true;
+            //Para conocer que conjunto presiono primero.
             if (operadorPrimero == "")
             {
                 operadorPrimero = "Interseccion";
@@ -856,8 +915,11 @@ namespace ConjuntosMapeo
 
         private void button7_Click(object sender, EventArgs e)
         {
+            //Imprimimos en pantalla.
             txtOpera.Text += "--";
+            //Volvemos true nuesta variable.
             operacionDiferen = true;
+            //Para conocer que conjunto presiono primero.
             if (operadorPrimero == "")
             {
                 operadorPrimero = "Diferencia";
@@ -870,8 +932,11 @@ namespace ConjuntosMapeo
 
         private void button10_Click(object sender, EventArgs e)
         {
+            //Imprimimos en pantalla.
             txtOpera.Text += "x";
+            //Volvemos true nuesta variable.
             operacionProducto = true;
+            //Para conocer que conjunto presiono primero.
             if (operadorPrimero == "")
             {
                 operadorPrimero = "Multiplicacion";
@@ -884,15 +949,20 @@ namespace ConjuntosMapeo
 
         private void button9_Click(object sender, EventArgs e)
         {
+            //Imprimimos en pantalla.
             txtOpera.Text += "P()";
+            //Volvemos true nuesta variable.
             operacionPotencia = true;
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             //Si los elementos que tiene A estan en B.
+            //Imprimimos en pantalla.
             txtOpera.Text += "⊆ ";
+            //Volvemos true nuesta variable.
             operacionPertenencia = true;
+            // Para conocer que conjunto presiono primero.
             if (operadorPrimero == "")
             {
                 operadorPrimero = "Pertenencia1";
@@ -905,8 +975,11 @@ namespace ConjuntosMapeo
 
         private void button8_Click(object sender, EventArgs e)
         {
+            //Imprimimos en pantalla.
             txtOpera.Text += "Con";
+            //Volvemos true nuesta variable.
             operacionConca = true;
+            //Para conocer que conjunto presiono primero.
             if (operadorPrimero == "")
             {
                 operadorPrimero = "Concatenacion";
@@ -921,7 +994,7 @@ namespace ConjuntosMapeo
         {
             auxiliar = "";
             //Guardamos en la variable el valor introducido por el usuario.
-            auxiliar = InputDialog.mostrar("Introduzca algun dato");
+            auxiliar = InputDialog.mostrar("Introduzca algun dato del conjunto C");
             //Lo guardamos en nuestra lista correspondiente.
             mundoC.Add(auxiliar);
             //Lo imprimimos para ver el valor.
@@ -931,8 +1004,11 @@ namespace ConjuntosMapeo
         private void button12_Click(object sender, EventArgs e)
         {
             //Si los elementos que tiene B estan en A.
+            //Imprimimos en pantalla.
             txtOpera.Text += "⊃";
+            //Volvemos true nuesta variable.
             operacionPertenencia2 = true;
+            // Para conocer que conjunto presiono primero.
             if (operadorPrimero == "")
             {
                 operadorPrimero = "Pertenencia2";
