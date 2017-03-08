@@ -472,14 +472,17 @@ namespace ConjuntosMapeo
                 if (tercero == "A")
                 {
                     interseccion2(resultadoTotal, mundoA);
+                    imprimir();
                 }
                 else if (tercero == "B")
                 {
                     interseccion2(resultadoTotal, mundoB);
+                    imprimir();
                 }
                 else if (tercero == "C")
                 {
                     interseccion2(resultadoTotal, mundoC);
+                    imprimir();
                 }
             }
             else if (operadorSegundo == "Diferencia")
@@ -487,14 +490,17 @@ namespace ConjuntosMapeo
                 if (tercero == "A")
                 {
                     diferencia2(resultadoTotal, mundoA);
+                    imprimir();
                 }
                 else if (tercero == "B")
                 {
                     diferencia2(resultadoTotal, mundoB);
+                    imprimir();
                 }
                 else if (tercero == "C")
                 {
                     diferencia2(resultadoTotal, mundoC);
+                    imprimir();
                 }
             }
             else if (operadorSegundo == "Complemento")
