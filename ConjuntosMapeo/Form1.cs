@@ -26,20 +26,59 @@ namespace ConjuntosMapeo
         List<String> mundoB = new List<String>();
         List<String> mundoC = new List<String>();
         //Declarancion de un auxiliar.
-        String auxiliar, primero, segundo, tercero;
+        String auxiliar, primero, segundo, tercero, operadorPrimero, operadorSegundo;
         //Declaracion de variables auxiliares.
         Boolean operacionA, operacionB, operacionC, operacionUnion, operacionComple, operacionInter, operacionDiferen,
                 operacionConca, operacionProducto, operacionPotencia, operacionPertenencia, operacionPertenencia2;
+        //Metodo para hacer operaciones en listas.
+        IEnumerable<String> resultadoTotal;
+        List<String> resultados;
+
+        private void imprimir()
+        {
+            string aux = label15.Text;
+            if (aux.Length == 0)
+            {
+                foreach (String valor in resultadoTotal)
+                {
+                    label15.Text += valor + ", ";
+                }
+            }
+            else
+            {
+                foreach (String valor in resultadoTotal)
+                {
+                    label16.Text += valor + ", ";
+                }
+            }
+        }
+
+        private void imprimir2()
+        {
+            foreach (String valor in resultados)
+            {
+                label15.Text += valor + ", ";
+            }
+        }
+
+        private void convertidor()
+        {
+            for (int h = 0; h < resultadoTotal.Count(); h++)
+            {
+                //resultados.Add(resultadoTotal.Concat);
+            }
+        }
 
         private void union(List<String> uno, List<String> dos)
         {
             //Metodo para unir dos listas.
-            IEnumerable<String> resultadoU = uno.Union(dos);
-            //Ciclo para imprimir el resultado.
-            foreach (String valor in resultadoU)
-            {
-                label15.Text += valor + ", ";
-            }
+            resultadoTotal = uno.Union(dos);
+        }
+
+        private void union2(IEnumerable<String> uno, List<String> dos)
+        {
+            //Metodo para unir dos listas.
+            resultadoTotal = uno.Union(dos);
         }
 
         private void complemento(List<String> uno)
@@ -68,12 +107,39 @@ namespace ConjuntosMapeo
             */
 
 
-            IEnumerable<String> resultadoC = universo.Except(uno);
+            resultadoTotal = universo.Except(uno);
             //Ciclo para imprimir el resultado.
-            foreach (String valor in resultadoC)
+
+        }
+
+        private void complemento2(IEnumerable<String> uno)
+        {
+            /*List<String> resultadoC = new List<String>();
+            string palabra = "";
+            String a;
+            for (int s = 0; s < universo.Count; s++)
             {
-                label15.Text += valor + ", ";
+                for (int e = 0; e < uno.Count; e++)
+                {
+                    if (universo[s].Equals(uno[e]))
+                    {
+                        //  s++;
+                        // String a = universo[s];
+                    }
+                    else
+                    {
+                        // resultadoC.Add(universo[s]);
+                        a = universo[s];
+                        e++;
+                    }
+                }
+                resultadoC.Add(a);
             }
+            */
+
+
+            resultadoTotal = universo.Except(uno);
+            //Ciclo para imprimir el resultado.
         }
 
         private void pertenencia(List<String> uno, List<String> dos)
@@ -97,89 +163,95 @@ namespace ConjuntosMapeo
 
             if (uno.Count == auxil)
             {
-                label15.Text = "Todos los elementos se encontraron.";
+                label16.Text = "Todos los elementos se encontraron.";
             }
             else
             {
-                label15.Text = "Todos los elementos se NO encontraron.";
+                label16.Text = "Todos los elementos NO encontraron.";
             }
         }
 
         private void interseccion(List<String> uno, List<String> dos)
         {
             //Metodo para unir dos listas.
-            IEnumerable<String> resultadoI = uno.Intersect(dos);
+            resultadoTotal = uno.Intersect(dos);
             //Ciclo para imprimir el resultado.
-            resultadoI.Count();
-            if (resultadoI.Count().Equals(0))
+            if (resultadoTotal.Count().Equals(0))
             {
-                label15.Text = "No hay valores.";
+                label16.Text = "No hay valores.";
             }
-            foreach (String valor in resultadoI)
+
+        }
+
+        private void interseccion2(IEnumerable<String> uno, List<String> dos)
+        {
+            //Metodo para unir dos listas.
+            resultadoTotal = uno.Intersect(dos);
+            //Ciclo para imprimir el resultado.
+            if (resultadoTotal.Count().Equals(0))
             {
-                label15.Text += valor + ", ";
+                label16.Text = "No hay valores.";
             }
+            imprimir();
         }
 
         private void diferencia(List<String> uno, List<String> dos)
         {
-            IEnumerable<String> resultadoD = uno.Except(dos);
+            resultadoTotal = uno.Except(dos);
             //Ciclo para imprimir el resultado.
-            foreach (String valor in resultadoD)
-            {
-                label15.Text += valor + ", ";
-            }
+
+        }
+
+        private void diferencia2(IEnumerable<String> uno, List<String> dos)
+        {
+            resultadoTotal = uno.Except(dos);
+            //Ciclo para imprimir el resultado.
 
         }
 
         private void potencia(List<String> uno)
         {
-            List<String> resultadoP = new List<String>();
             for (int i = 0; i < uno.Count; i++)
             {
-                resultadoP.Add(uno[i]);
+                resultados.Add(uno[i]);
             }
             int contador = 1;
             for (int i = 0; i < uno.Count; i++)
             {
                 for (int w = contador; w < uno.Count; w++)
                 {
-                    resultadoP.Add(uno[i] + uno[w]);
+                    resultados.Add(uno[i] + uno[w]);
 
                 }
                 contador++;
             }
-            foreach (String valor in resultadoP)
-            {
-                label15.Text += valor + ", ";
-            }
+            imprimir2();
         }
 
         private void producto(List<String> uno, List<String> dos)
         {
-            List<String> resultadoP = new List<String>();
             for (int f = 0; f < uno.Count; f++)
             {
                 for (int o = 0; o < dos.Count; o++)
                 {
-                    resultadoP.Add(dos[o] + uno[f]);
+                    resultados.Add(dos[o] + uno[f]);
                 }
             }
-            foreach (String valor in resultadoP)
-            {
-                label15.Text += valor + ", ";
-            }
+            imprimir2();
         }
 
         private void concatenacion(List<String> uno, List<String> dos)
         {
             //Metodo para unir dos listas.
-            IEnumerable<String> resultadoU = dos.Concat(uno);
+            resultadoTotal = dos.Concat(uno);
             //Ciclo para imprimir el resultado.
-            foreach (String valor in resultadoU)
-            {
-                label15.Text += valor + ", ";
-            }
+        }
+
+        private void concatenacion2(IEnumerable<String> uno, List<String> dos)
+        {
+            //Metodo para unir dos listas.
+            resultadoTotal = dos.Concat(uno);
+            imprimir();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -233,7 +305,7 @@ namespace ConjuntosMapeo
             {
                 segundo = "A";
             }
-            else
+            else if (tercero == "")
             {
                 tercero = "A";
             }
@@ -252,7 +324,7 @@ namespace ConjuntosMapeo
             {
                 segundo = "B";
             }
-            else
+            else if (tercero == "")
             {
                 tercero = "B";
             }
@@ -261,7 +333,20 @@ namespace ConjuntosMapeo
         private void button14_Click(object sender, EventArgs e)
         {
             label15.Text = "";
+            label16.Text = "";
             txtOpera.Text = "";
+            primero = ""; segundo = ""; tercero = "";
+            operacionA = false; operacionB = false; operacionC = false;
+            operadorPrimero = ""; operadorSegundo = "";
+            operacionUnion = false;
+            operacionComple = false;
+            operacionInter = false;
+            operacionDiferen = false;
+            operacionConca = false;
+            operacionProducto = false;
+            operacionPotencia = false;
+            operacionPertenencia = false;
+            operacionPertenencia2 = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -276,7 +361,7 @@ namespace ConjuntosMapeo
             {
                 segundo = "C";
             }
-            else
+            else if (tercero == "")
             {
                 tercero = "C";
             }
@@ -284,9 +369,22 @@ namespace ConjuntosMapeo
 
         private void button13_Click(object sender, EventArgs e)
         {
+            if (radioButton1.Checked)
+            {
+                UnaOperacion();
+            }
+            else if (radioButton2.Checked)
+            {
+                DosOperaciones();
+            }
+        }
+
+        private void UnaOperacion()
+        {
             if (operacionUnion)
             {
                 auxiliarUnion();
+                imprimir();
             }
             else if (operacionComple)
             {
@@ -295,6 +393,7 @@ namespace ConjuntosMapeo
             else if (operacionInter)
             {
                 auxiliarInterseccion();
+                imprimir();
             }
             else if (operacionDiferen)
             {
@@ -303,6 +402,7 @@ namespace ConjuntosMapeo
             else if (operacionConca)
             {
                 auxiliarConcatenacion();
+                imprimir();
             }
             else if (operacionProducto)
             {
@@ -320,9 +420,94 @@ namespace ConjuntosMapeo
             {
                 auxiliarPertenencia2();
             }
-            primero = ""; segundo = ""; tercero = "";
-            operacionA = false; operacionB = false; operacionC = false;
         }
+
+        private void DosOperaciones()
+        {
+            UnaOperacion();
+            if (operadorSegundo == "Union")
+            {
+                if (tercero == "A")
+                {
+                    union2(resultadoTotal, mundoA);
+                    imprimir();
+                }
+                else if (tercero == "B")
+                {
+                    union2(resultadoTotal, mundoB);
+                    imprimir();
+                }
+                else if (tercero == "C")
+                {
+                    union2(resultadoTotal, mundoC);
+                    imprimir();
+                }
+            }
+            else if (operadorSegundo == "Interseccion")
+            {
+                if (tercero == "A")
+                {
+                    interseccion2(resultadoTotal, mundoA);
+                }
+                else if (tercero == "B")
+                {
+                    interseccion2(resultadoTotal, mundoB);
+                }
+                else if (tercero == "C")
+                {
+                    interseccion2(resultadoTotal, mundoC);
+                }
+            }
+            else if (operadorSegundo == "Diferencia")
+            {
+                if (tercero == "A")
+                {
+                    diferencia2(resultadoTotal, mundoA);
+                }
+                else if (tercero == "B")
+                {
+                    diferencia2(resultadoTotal, mundoB);
+                }
+                else if (tercero == "C")
+                {
+                    diferencia2(resultadoTotal, mundoC);
+                }
+            }
+            else if (operadorSegundo == "Complemento")
+            {
+                if (segundo == "A")
+                {
+                    complemento2(resultadoTotal);
+                    imprimir();
+                }
+                else if (segundo == "B")
+                {
+                    complemento2(resultadoTotal);
+                    imprimir();
+                }
+                else if (segundo == "C")
+                {
+                    complemento2(resultadoTotal);
+                    imprimir();
+                }
+            }
+            else if (operadorSegundo == "Concatenacion")
+            {
+                if (tercero == "A")
+                {
+                    concatenacion2(resultadoTotal, mundoA);
+                }
+                else if (tercero == "B")
+                {
+                    concatenacion2(resultadoTotal, mundoB);
+                }
+                else if (tercero == "C")
+                {
+                    concatenacion2(resultadoTotal, mundoC);
+                }
+            }
+        }
+
 
         private void auxiliarUnion()
         {
@@ -335,6 +520,7 @@ namespace ConjuntosMapeo
                 else
                 {
                     union(mundoB, mundoA);
+
                 }
             }
             else if (operacionA && operacionC)
@@ -342,10 +528,12 @@ namespace ConjuntosMapeo
                 if (primero == "A" && segundo == "C")
                 {
                     union(mundoA, mundoC);
+
                 }
                 else
                 {
                     union(mundoC, mundoA);
+
                 }
             }
             else
@@ -353,10 +541,12 @@ namespace ConjuntosMapeo
                 if (primero == "B" && segundo == "C")
                 {
                     union(mundoB, mundoC);
+
                 }
                 else
                 {
                     union(mundoC, mundoB);
+
                 }
             }
         }
@@ -396,7 +586,6 @@ namespace ConjuntosMapeo
                     pertenencia(mundoC, mundoB);
                 }
             }
-
         }
 
         private void auxiliarPertenencia2()
@@ -434,7 +623,6 @@ namespace ConjuntosMapeo
                     pertenencia(mundoB, mundoC);
                 }
             }
-
         }
 
         private void auxiliarConcatenacion()
@@ -444,10 +632,12 @@ namespace ConjuntosMapeo
                 if (primero == "A" && segundo == "B")
                 {
                     concatenacion(mundoA, mundoB);
+                    imprimir();
                 }
                 else
                 {
                     concatenacion(mundoB, mundoA);
+                    imprimir();
                 }
             }
             else if (operacionA && operacionC)
@@ -455,10 +645,12 @@ namespace ConjuntosMapeo
                 if (primero == "A" && segundo == "C")
                 {
                     concatenacion(mundoA, mundoC);
+                    imprimir();
                 }
                 else
                 {
                     concatenacion(mundoC, mundoA);
+                    imprimir();
                 }
             }
             else
@@ -466,10 +658,12 @@ namespace ConjuntosMapeo
                 if (primero == "B" && segundo == "C")
                 {
                     concatenacion(mundoB, mundoC);
+                    imprimir();
                 }
                 else
                 {
                     concatenacion(mundoC, mundoB);
+                    imprimir();
                 }
             }
         }
@@ -481,10 +675,12 @@ namespace ConjuntosMapeo
                 if (primero == "A" && segundo == "B")
                 {
                     producto(mundoA, mundoB);
+                    imprimir();
                 }
                 else
                 {
                     producto(mundoB, mundoA);
+                    imprimir();
                 }
             }
             else if (operacionA && operacionC)
@@ -492,10 +688,12 @@ namespace ConjuntosMapeo
                 if (primero == "A" && segundo == "C")
                 {
                     producto(mundoA, mundoC);
+                    imprimir();
                 }
                 else
                 {
                     producto(mundoC, mundoA);
+                    imprimir();
                 }
             }
             else
@@ -503,10 +701,12 @@ namespace ConjuntosMapeo
                 if (primero == "B" && segundo == "C")
                 {
                     producto(mundoB, mundoC);
+                    imprimir();
                 }
                 else
                 {
                     producto(mundoC, mundoB);
+                    imprimir();
                 }
             }
         }
@@ -518,10 +718,12 @@ namespace ConjuntosMapeo
                 if (primero == "A" && segundo == "B")
                 {
                     diferencia(mundoA, mundoB);
+                    imprimir();
                 }
                 else if (primero == "B" && segundo == "A")
                 {
                     diferencia(mundoB, mundoA);
+                    imprimir();
                 }
             }
             else if (operacionA && operacionC)
@@ -529,10 +731,12 @@ namespace ConjuntosMapeo
                 if (primero == "A" && segundo == "C")
                 {
                     diferencia(mundoA, mundoC);
+                    imprimir();
                 }
                 else if (primero == "C" && segundo == "A")
                 {
                     diferencia(mundoC, mundoA);
+                    imprimir();
                 }
             }
             else
@@ -540,10 +744,12 @@ namespace ConjuntosMapeo
                 if (primero == "B" && segundo == "C")
                 {
                     diferencia(mundoB, mundoC);
+                    imprimir();
                 }
                 else if (primero == "C" && segundo == "B")
                 {
                     diferencia(mundoC, mundoB);
+                    imprimir();
                 }
             }
 
@@ -554,14 +760,17 @@ namespace ConjuntosMapeo
             if (operacionA && operacionB)
             {
                 interseccion(mundoA, mundoB);
+
             }
             else if (operacionA && operacionC)
             {
                 interseccion(mundoA, mundoC);
+
             }
             else
             {
                 interseccion(mundoB, mundoC);
+
             }
         }
 
@@ -570,14 +779,17 @@ namespace ConjuntosMapeo
             if (operacionA)
             {
                 complemento(mundoA);
+                imprimir();
             }
             else if (operacionB)
             {
                 complemento(mundoB);
+                imprimir();
             }
             else
             {
                 complemento(mundoC);
+                imprimir();
             }
         }
 
@@ -586,14 +798,17 @@ namespace ConjuntosMapeo
             if (operacionA)
             {
                 potencia(mundoA);
+                imprimir();
             }
             else if (operacionB)
             {
                 potencia(mundoB);
+                imprimir();
             }
             else
             {
                 potencia(mundoC);
+                imprimir();
             }
         }
 
@@ -601,30 +816,70 @@ namespace ConjuntosMapeo
         {
             txtOpera.Text += "'";
             operacionComple = true;
+            if (operadorPrimero == "")
+            {
+                operadorPrimero = "Complemento";
+            }
+            else if (operadorSegundo == "")
+            {
+                operadorSegundo = "Complemento";
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             txtOpera.Text += "∪ ";
             operacionUnion = true;
+            if (operadorPrimero == "")
+            {
+                operadorPrimero = "Union";
+            }
+            else if (operadorSegundo == "")
+            {
+                operadorSegundo = "Union";
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             txtOpera.Text += "∩";
             operacionInter = true;
+            if (operadorPrimero == "")
+            {
+                operadorPrimero = "Interseccion";
+            }
+            else if (operadorSegundo == "")
+            {
+                operadorSegundo = "Interseccion";
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             txtOpera.Text += "--";
             operacionDiferen = true;
+            if (operadorPrimero == "")
+            {
+                operadorPrimero = "Diferencia";
+            }
+            else if (operadorSegundo == "")
+            {
+                operadorSegundo = "Diferencia";
+            }
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             txtOpera.Text += "x";
             operacionProducto = true;
+            if (operadorPrimero == "")
+            {
+                operadorPrimero = "Multiplicacion";
+            }
+            else if (operadorSegundo == "")
+            {
+                operadorSegundo = "Multiplicacion";
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -638,12 +893,28 @@ namespace ConjuntosMapeo
             //Si los elementos que tiene A estan en B.
             txtOpera.Text += "⊆ ";
             operacionPertenencia = true;
+            if (operadorPrimero == "")
+            {
+                operadorPrimero = "Pertenencia1";
+            }
+            else if (operadorSegundo == "")
+            {
+                operadorSegundo = "Pertenencia1";
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             txtOpera.Text += "Con";
             operacionConca = true;
+            if (operadorPrimero == "")
+            {
+                operadorPrimero = "Concatenacion";
+            }
+            else if (operadorSegundo == "")
+            {
+                operadorSegundo = "Concatenacion";
+            }
         }
 
         private void btnC_Click(object sender, EventArgs e)
@@ -662,6 +933,14 @@ namespace ConjuntosMapeo
             //Si los elementos que tiene B estan en A.
             txtOpera.Text += "⊃";
             operacionPertenencia2 = true;
+            if (operadorPrimero == "")
+            {
+                operadorPrimero = "Pertenencia2";
+            }
+            else if (operadorSegundo == "")
+            {
+                operadorSegundo = "Pertenencia2";
+            }
         }
 
     }
