@@ -360,6 +360,7 @@ namespace ConjuntosMapeo
             operacionPotencia = false;
             operacionPertenencia = false;
             operacionPertenencia2 = false;
+            resultados.Clear();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -853,18 +854,14 @@ namespace ConjuntosMapeo
             {
                 //Enviamos los conjuntos de manera ordenada.
                 potencia(mundoA);
-                //Imprimimos los resultados.
-                imprimir();
             }
             else if (operacionB)
             {
                 potencia(mundoB);
-                imprimir();
             }
             else
             {
                 potencia(mundoC);
-                imprimir();
             }
         }
 
